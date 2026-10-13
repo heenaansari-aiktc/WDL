@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar Example</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">MyWebsite</div>
+    <ul class="nav-links">
+      <li><a href="#" class="nav-item active" data-title="Home Page">Home</a></li>
+      <li><a href="#" class="nav-item" data-title="About Us">About</a></li>
+      
+      <!-- Dropdown Menu 
+       
+	    The required prefix that tells the browser, "This is a custom piece of data I am storing."
+
+	    The custom name chosen for the variable (you could name it data-page-name, data-info, etc.).
+
+        -->
+      <li class="dropdown">
+        <a href="#" class="nav-item dropbtn" data-title="Services Overview">Services <span class="arrow">&#9662;</span></a>
+        <div class="dropdown-content">
+          <a href="http://w3schools.com/tags/att_data-.asp" class="nav-item" data-title="Web Design Service">Web Design</a>
+          <a href="#" class="nav-item" data-title="Development Service">Development</a>
+          <a href="#" class="nav-item" data-title="SEO Optimization Service">SEO</a>
+        </div>
+      </li>
+
+      <li><a href="#" class="nav-item" data-title="Contact Us">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Content Area -->
+  <main class="content-area">
+    <h1 id="page-title">Home Page</h1>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
