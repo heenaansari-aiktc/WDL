@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Minimal Navbar</title>
+  <style>
+    /* Essential Styles Only */
+    body { 
+        margin: 0; 
+    }
+    
+    .navbar { 
+        display: flex; 
+        justify-content: space-between; 
+        background: #333; 
+        padding: 15px; 
+    
+    }
+    
+    .logo { 
+        color: white; 
+        font-weight: bold; 
+    }
+    
+    .nav-links { 
+        list-style: none; 
+        display: flex; 
+        margin: 0; 
+        padding: 0; 
+    }
+
+    .nav-links a { 
+        color: white; 
+        text-decoration: none; 
+        padding: 10px 15px; 
+        display: block; 
+    }
+    
+    /* Hover and Active */
+    .nav-links a:hover, .nav-links a.active { 
+        background: #04AA6D; 
+    }
+    
+    /* Dropdown */
+    .dropdown { 
+        position: relative; 
+    }
+
+    .dropdown-content { 
+        display: none; 
+        position: absolute; 
+        background: #444; 
+        left: 0; 
+    }
+
+    .dropdown:hover .dropdown-content { 
+        display: block; 
+    }
+
+    /* Page Content */
+    .content { 
+        text-align: center; 
+        margin-top: 50px; 
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">MyWebsite</div>
+    <ul class="nav-links">
+      <li><a href="#" class="nav-item active" data-title="Home Page">Home</a></li>
+      <li><a href="#" class="nav-item" data-title="About Us">About</a></li>
+      
+      <li class="dropdown">
+        <a href="#" class="nav-item" data-title="Services Overview">Services ▾</a>
+        <div class="dropdown-content">
+          <a href="#" class="nav-item" data-title="Web Design">Web Design</a>
+          <a href="#" class="nav-item" data-title="Development">Development</a>
+        </div>
+      </li>
+
+      <li><a href="#" class="nav-item" data-title="Contact Us">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <h1 id="page-title">Home Page</h1>
+  </main>
+
+  <script>
+    const navItems = document.querySelectorAll('.nav-item');
+    const pageTitle = document.getElementById('page-title');
+
+    navItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        navItems.forEach(nav => nav.classList.remove('active'));
+        this.classList.add('active');
+        pageTitle.textContent = this.getAttribute('data-title');
+      });
+    });
+  </script>
+
+</body>
+</html>
