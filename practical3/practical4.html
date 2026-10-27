@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register</title>
+        <style>
+            div{
+                margin: 30px;
+            }
+            label{
+                margin: 10px;
+                display: block;
+            }
+            input{
+                margin: 10px;
+                padding: 5px;
+            }
+            button{
+                margin-left: 50px;
+                margin-bottom: 50px;
+                padding: 15px;
+                background-color: antiquewhite;
+            }
+
+            .error{
+                color: red;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <h2> Registeration Form</h2>
+        <form id="regForm">
+            <fieldset>
+                <legend>Sign Up</legend>
+                    <div>
+                        <label>Username</label>
+                        <input type="text" id="username" placeholder="Enter your username">
+                        <span class="error" id="usernameError"></span>
+                    </div>
+                    <div>
+                        <label>Email address</label>
+                        <input type="text" id="email" placeholder="Enter your email">
+                        <span class="error" id="emailError"></span>
+                    </div>
+                    <div>
+                        <label>Password</label>
+                        <input type="password" id="password" placeholder="Enter password">
+                        <span class="error" id="passwordError"></span>
+                    </div>
+                    <div>
+                        <label>Confirm Password</label>
+                        <input type="password" id="confirm-password" placeholder="Confirm password">
+                        <span class="error" id="confirmPasswordError"></span>
+                    </div>
+                    <button type="submit">Submit</button>
+
+            </fieldset>
+        </form>
+        <script>
+            const form = document.getElementById('regForm');
+            const username = document.getElementById('username');
+            const email = document.getElementById('email');
+            form.addEventListener('submit', function(e){
+                 e.preventDefault(); 
+                //Required validation block
+                if(username.value.trim() === ''){
+                    document.getElementById('usernameError').textContent = 'User Name is required';
+                    isValid = false;
+                } else{
+                    document.getElementById('usernameError').textContent = '';
+                }
+                if(email.value.trim() === ''){
+                    document.getElementById('emailError').textContent = 'Email is required';
+                    isValid = false;
+                } else{
+                    document.getElementById('emailError').textContent = '';
+                }
+                //REquired valdation block ends
+
+            });
+        </script>
+    </body>
+</html>
