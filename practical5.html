@@ -8,6 +8,7 @@
         .gallery {
             display: flex;
             gap: 20px;
+            margin: 150px;
         }
 
         .thumbnail {
@@ -40,23 +41,24 @@
 </head>
 <body>
     <main class="gallery">
-        <img class="thumbnail" src="C:\Users\dell\Downloads\img1.jpg" alt="Forest" onclick="toggleScale(this)">
-        <img class="thumbnail" src="C:\Users\dell\Downloads\img2.jpg" alt="Hills" onclick="toggleScale(this)">
-        <img class="thumbnail" src="C:\Users\dell\Downloads\img3.jpg" alt="Beach" onclick="toggleScale(this)">
+        <img class="thumbnail" src="C:\Users\dell\Downloads\img1.jpg" alt="Forest">
+        <img class="thumbnail" src="C:\Users\dell\Downloads\img2.jpg" alt="Hills">
+        <img class="thumbnail" src="C:\Users\dell\Downloads\img3.jpg" alt="Beach">
     </main>
 
     <script>
-        function toggleScale(clickedImage) {
-            if (clickedImage.classList.contains('large')) {
-                clickedImage.classList.remove('large');
-                return;
-            }
+       const thumbnails = document.querySelectorAll('.thumbnail');
 
-            const thumbnails = document.querySelectorAll('.thumbnail');
-            thumbnails.forEach(thumb => thumb.classList.remove('large'));
-
-            clickedImage.classList.add('large');
-        }
+        thumbnails.forEach(image => {
+            image.addEventListener('click', function() {
+                if (this.classList.contains('large')) {
+                    this.classList.remove('large');
+                    return;
+                }
+                thumbnails.forEach(thumb => thumb.classList.remove('large'));
+                this.classList.add('large');
+            });
+        });
     </script>
 </body>
 </html>
