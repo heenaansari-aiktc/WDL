@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minimal To-Do</title>
+    <style>
+        main {
+            border: 2px solid black;
+            border-radius: 2px;
+            height: 500px;
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+        }
+        button {
+            padding: 5px;
+            margin-left: 20px;
+            background-color: antiquewhite;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        #taskInput { 
+            margin-left: 20px;
+        }
+        .done {
+            text-decoration: line-through;
+            color: gray;
+        }
+        li {
+            cursor: pointer;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <h1>TO DO</h1>
+        <input type="text" id="taskInput" placeholder="Enter a task">
+        <button onclick="addTask()">Add</button>
+        <ul id="taskList"></ul>
+    </main>
+
+    <script>
+        var tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+        function getTask() {
+                const list = document.getElementById('taskList'); 
+                list.innerHTML = '';
+
+                tasks.forEach((task, index) => {
+                    list.innerHTML += `
+                        <li>
+                            <input type="checkbox" ${task.done ? 'checked' : ''} onclick="toggleTask(${index})">
+                            <span class="${task.done ? 'done' : ''}">${task.text}</span>
+                            <span onclick="deleteTask(${index})" style="color:red; margin-left:10px;">✕</span>
+                        </li>
+                    `;
+                });
+            }
+
+
+        function addTask() {
+            const input = document.getElementById('taskInput');
+            if (!input.value) return;
+
+            tasks.push({ text: input.value, done: false });
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            input.value = '';
+            
+            getTask();
+        }
+
+        function toggleTask(index) {
+            tasks[index].done = !tasks[index].done;
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            getTask();
+        }
+
+        function deleteTask(index) {
+            tasks.splice(index, 1);
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            getTask();
+        }
+
+        getTask();
+    </script>
+</body>
+</html>
