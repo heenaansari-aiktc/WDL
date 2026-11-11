@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Scale Gallery</title>
+    <style>
+        .gallery {
+            display: flex;
+            gap: 20px;
+        }
+
+        .thumbnail {
+            width: 150px;
+            height: 100px;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease; /*how to make an element change from one state to another*/
+            /*
+            • transform (What to animate). Tells the browser to only animate movement, size, rotation, or tilt changes. Other updates, like background colors, will still change instantly.
+            • 0.3s (How long it takes). Sets the animation speed to 0.3 seconds (300 milliseconds). This makes the movement feel quick and natural rather than sluggish.
+            • ease (How it moves). Controls the pacing of the animation. The movement starts gently, speeds up in the middle, and slows down smoothly at the end.
+            */
+        }
+
+        .thumbnail.large {
+            transform: scale(2.5); /* Equal to scaleX(0.7) scaleY(0.7) */
+            z-index: 1;
+            /*
+            The CSS z-index property controls the vertical stacking order of overlapping elements, 
+            deciding which element sits on top and which stays behind.
+            • Higher numbers sit on top. An element with z-index: 10; will appear in front of an overlapping element with z-index: 1;.
+• Negative numbers go behind. Setting z-index: -1; pushes an element behind normal page content, which is useful for background shapes or overlays.
+• Requires a position value. By default, z-index does nothing unless you also give the element a position like relative, absolute, fixed, or sticky.
+• Default order without z-index. If two elements overlap without a z-index, the one written later in your HTML code automatically sits on top.
+• Works inside parent groups. If a parent box has a low z-index, its child elements cannot jump above elements outside that parent, even if you give the child z-index: 9999;.
+*/
+        }
+    </style>
+</head>
+<body>
+    <main class="gallery">
+        <img class="thumbnail" src="C:\Users\dell\Downloads\img1.jpg" alt="Forest" onclick="toggleScale(this)">
+        <img class="thumbnail" src="C:\Users\dell\Downloads\img2.jpg" alt="Hills" onclick="toggleScale(this)">
+        <img class="thumbnail" src="C:\Users\dell\Downloads\img3.jpg" alt="Beach" onclick="toggleScale(this)">
+    </main>
+
+    <script>
+        function toggleScale(clickedImage) {
+            if (clickedImage.classList.contains('large')) {
+                clickedImage.classList.remove('large');
+                return;
+            }
+
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach(thumb => thumb.classList.remove('large'));
+
+            clickedImage.classList.add('large');
+        }
+    </script>
+</body>
+</html>
