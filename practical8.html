@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Display JSON Data Dynamically</title>
+  <style>
+    body {
+      margin: 40px;
+    }
+    button {
+      padding: 12px 20px;
+      background-color: rgb(141, 107, 64);
+      cursor: pointer;
+      font-size: 16px;
+    }
+    ul {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Student List</h2>
+  <button id="showBtn">Show Students</button>
+  <ul id="studentList"></ul>
+
+  <script>
+    const showBtn = document.getElementById('showBtn');
+    const studentList = document.getElementById('studentList');
+
+    // JSON-style data: an array of objects with labeled keys
+    const students = [
+      { "id": 1, "name": "Aarav", "email": "aarav@example.com" },
+      { "id": 2, "name": "Diya", "email": "diya@example.com" },
+      { "id": 3, "name": "Rohan", "email": "rohan@example.com" }
+    ];
+
+    showBtn.addEventListener('click', function () {
+      studentList.replaceChildren(); // Clear old list
+
+      students.forEach(function (student) {
+        const li = document.createElement('li'); // 1. Make a bullet
+        li.textContent = `${student.name} - ${student.email}`; // 2. Read keys using dot notation
+       console.log(li);
+        studentList.appendChild(li); // 3. Stick it on the page
+      });
+    });
+  </script>
+
+</body>
+</html>
