@@ -1,0 +1,30 @@
+    
+    div {
+      margin: 30px;
+    }
+    label {
+      margin: 10px;
+      display: block;
+    }
+    input {
+      margin: 10px;
+      padding: 5px;
+    }
+    button {
+      margin-left: 50px;
+      margin-bottom: 50px;
+      padding: 15px;
+      background-color: green;
+      cursor: pointer;
+    }
+    .error {
+      color: red;
+      display: block;
+      margin-left: 10px;
+    }
+    .greeting {
+      color: green;
+      font-weight: bold;
+      font-size: 1.2em;
+      margin: 30px;
+    }
